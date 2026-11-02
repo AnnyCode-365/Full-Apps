@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Ghost Network</string>
+    <string name="vpn_service_title">Ghost Network VPN</string>
+    <string name="floating_service_title">Ghost Floating Panel</string>
+</resources>

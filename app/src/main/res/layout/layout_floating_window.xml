@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <!-- VISÃO COMPACTA (MINIMIZADA) -->
+    <LinearLayout
+        android:id="@+id/layout_compact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_compact_pill"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="10dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_ghost_icon"
+            android:contentDescription="@string/app_name" />
+
+        <TextView
+            android:id="@+id/txt_compact_ping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="35 ms"
+            android:textColor="#00E5FF"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_compact_jitter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="±2ms"
+            android:textColor="#A855F7"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <!-- VISÃO EXPANDIDA (PAINEL DE CONTROLE FLUTUANTE) -->
+    <LinearLayout
+        android:id="@+id/layout_expanded"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_floating_panel"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:visibility="visible">
+
+        <!-- CABEÇALHO -->
+        <LinearLayout
+            android:id="@+id/header_drag_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_ghost_icon"
+                android:contentDescription="@string/app_name" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:text="GHOST NETWORK"
+                android:textColor="#FFFFFF"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btn_minimize"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:gravity="center"
+                android:text="[−]"
+                android:textColor="#00E5FF"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:background="?android:attr/selectableItemBackgroundBorderless" />
+
+            <TextView
+                android:id="@+id/btn_close"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:gravity="center"
+                android:text="[✕]"
+                android:textColor="#FF5252"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:background="?android:attr/selectableItemBackgroundBorderless" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="#1E293B" />
+
+        <!-- CONTROLES INDEPENDENTES -->
+        <!-- FLOATING SWITCH -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="FLOATING"
+                android:textColor="#94A3B8"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+            <Switch
+                android:id="@+id/switch_floating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true" />
+        </LinearLayout>
+
+        <!-- VPN SWITCH -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="2dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="VPN"
+                android:textColor="#94A3B8"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+            <Switch
+                android:id="@+id/switch_vpn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- JITTER SWITCH -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="2dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="JITTER"
+                android:textColor="#94A3B8"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+            <Switch
+                android:id="@+id/switch_jitter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true" />
+        </LinearLayout>
+
+        <!-- UDP SWITCH -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="2dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="UDP"
+                android:textColor="#94A3B8"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+            <Switch
+                android:id="@+id/switch_udp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="#1E293B" />
+
+        <!-- PAINEL DE TELEMETRIA REAL -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#141B2D"
+            android:padding="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="PING:"
+                    android:textColor="#94A3B8"
+                    android:textSize="11sp" />
+                <TextView
+                    android:id="@+id/txt_panel_ping"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-- ms"
+                    android:textColor="#00E5FF"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="2dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="JITTER:"
+                    android:textColor="#94A3B8"
+                    android:textSize="11sp" />
+                <TextView
+                    android:id="@+id/txt_panel_jitter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-- ms"
+                    android:textColor="#A855F7"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="2dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="DOWNLOAD:"
+                    android:textColor="#94A3B8"
+                    android:textSize="11sp" />
+                <TextView
+                    android:id="@+id/txt_panel_download"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 KB/s"
+                    android:textColor="#38BDF8"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="2dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="UPLOAD:"
+                    android:textColor="#94A3B8"
+                    android:textSize="11sp" />
+                <TextView
+                    android:id="@+id/txt_panel_upload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 KB/s"
+                    android:textColor="#C084FC"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- BOTÃO ABRIR PAINEL -->
+        <Button
+            android:id="@+id/btn_open_app"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_btn_cyber"
+            android:text="[ABRIR PAINEL]"
+            android:textColor="#0B0F19"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</FrameLayout>
